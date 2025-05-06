@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "933412908895",
+    "project_id": "blmapp-78da8",
+    "storage_bucket": "blmapp-78da8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:933412908895:android:6f4f7c474d9eee0acad0ea",
+        "android_client_info": {
+          "package_name": "app.arken.blmapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGZp3pCMb6JVzW6uGwfFqKJ6mjXM3UVSI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
