@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
 import 'components/my_button.dart';
 import 'components/my_textfield.dart';
 
 class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key});
+  final void Function()? togglePages;
+  const RegisterPage({super.key, required this.togglePages});
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
@@ -98,11 +97,14 @@ class _RegisterPageState extends State<RegisterPage> {
                     style:
                         TextStyle(color: Theme.of(context).colorScheme.primary),
                   ),
-                  Text(
-                    'Login now.',
-                    style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
-                        fontWeight: FontWeight.bold),
+                  GestureDetector(
+                    onTap: widget.togglePages,
+                    child: Text(
+                      'Login now.',
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontWeight: FontWeight.bold),
+                    ),
                   )
                 ],
               )

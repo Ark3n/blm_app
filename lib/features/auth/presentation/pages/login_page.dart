@@ -16,7 +16,8 @@ import 'package:build_launch_monetize_app/features/auth/presentation/pages/compo
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  final void Function()? togglePages;
+  const LoginPage({super.key, required this.togglePages});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -105,11 +106,14 @@ class _LoginPageState extends State<LoginPage> {
                     style:
                         TextStyle(color: Theme.of(context).colorScheme.primary),
                   ),
-                  Text(
-                    'Register now.',
-                    style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
-                        fontWeight: FontWeight.bold),
+                  GestureDetector(
+                    onTap: widget.togglePages,
+                    child: Text(
+                      'Register now.',
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontWeight: FontWeight.bold),
+                    ),
                   )
                 ],
               )

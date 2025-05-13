@@ -1,5 +1,4 @@
-import 'package:build_launch_monetize_app/features/auth/presentation/pages/login_page.dart';
-import 'package:build_launch_monetize_app/features/auth/presentation/pages/register_page.dart';
+import 'package:build_launch_monetize_app/features/auth/presentation/pages/auth_page.dart';
 import 'package:build_launch_monetize_app/firebase_options.dart';
 import 'package:build_launch_monetize_app/themes/dark_mode.dart';
 import 'package:build_launch_monetize_app/themes/light_mode.dart';
@@ -24,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: lightMode,
       darkTheme: darkMode,
       debugShowCheckedModeBanner: false,
-      home: RegisterPage(),
+      home: AuthPage(),
     );
   }
 }
