@@ -1,4 +1,6 @@
+import 'package:build_launch_monetize_app/features/auth/presentation/cubits/auth_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'components/my_button.dart';
 import 'components/my_textfield.dart';
 
@@ -15,6 +17,51 @@ class _RegisterPageState extends State<RegisterPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
+
+  // register user
+  void register() {
+    final name = nameController.text;
+    final email = emailController.text;
+    final password = passwordController.text;
+    final confirmPw = confirmPasswordController.text;
+
+    // auth cubit
+    final authCubit = context.read<AuthCubit>();
+
+    // ensure that field not empty
+    if (name.isNotEmpty &
+        email.isNotEmpty &
+        password.isNotEmpty &
+        confirmPw.isNotEmpty) {
+      // check if passwords match
+      if (password == confirmPw) {
+        authCubit.register(name, email, password);
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Center(child: Text('Password don\'t math')),
+          ),
+        );
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Center(child: Text('Please complete all fields!')),
+        ),
+      );
+    }
+  }
+
+  // Dispose all controller to control memory lick
+  @override
+  void dispose() {
+    nameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,10 +127,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
               SizedBox(height: 25),
 
-              // login button
+              // signup button
               MyButton(
                 text: 'SIGN UP',
-                onTap: () => {},
+                onTap: register,
               ),
               SizedBox(height: 25),
               // oauth sign in later... (goggle apple)
@@ -97,6 +144,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     style:
                         TextStyle(color: Theme.of(context).colorScheme.primary),
                   ),
+
+                  // toggle to login page
                   GestureDetector(
                     onTap: widget.togglePages,
                     child: Text(
